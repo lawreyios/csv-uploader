@@ -58,13 +58,16 @@ class App extends Component {
 
         var guestList = [];
 
-        for (var i = 1; i <= data.length; i++) {
-          const id = data[i][0];
-          const name = data[i][1];
-          const newUser = { "id": id, "name": name };
+        for (var i = 1; i <= data.length - 1; i++) {
+          const name = data[i][0];
+          const phoneNumber = data[i][1];
+          const invitationType = data[i][2];
+          const newUser = { "name": name, "phoneNumber": phoneNumber, "invitationType": invitationType };
           guestList.push(newUser);
 
-          fetch('https://alweds.firebaseio.com/guests.json', {
+          console.log(newUser);
+
+          fetch('https://alweds.firebaseio.com/users.json', {
             method: 'POST',
             headers: {
               'Accept': 'application/json',
